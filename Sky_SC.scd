@@ -10,7 +10,7 @@ OSCFunc.trace(bool: true, hideStatusMsg: true);  // I don't need no stinkin' sta
 */
 
 // thisProcess.platform.recordingsDir;
-// s.record(duration: 30);
+// s.record();
 
 (
 var fund = 50;
@@ -43,6 +43,7 @@ OSCdef(\highNote, {|msg|
 		    + SinOsc.ar((fundamental * 3.3)) * 0.1 * env
 			+ SinOsc.ar((fundamental * 4.4)) * 0.1 * env) * gain * 2 / 4.0;
 	}.play;
+	"play high note".postln;
 }, '/highNote');
 
 OSCdef(\melodyNote, {|msg|
@@ -53,6 +54,7 @@ OSCdef(\melodyNote, {|msg|
 		gain = scaleToGain.value(msg[1]);
 		sig = Pulse.ar(fundamental) * 0.1 * env * gain * 2;
 	}.play;
+	"play melody note".postln;
 }, '/melodyNote');
 
 OSCdef(\bassNote, {|msg|
@@ -63,7 +65,7 @@ OSCdef(\bassNote, {|msg|
 		gain = scaleToGain.value(msg[1]);
 		sig = Saw.ar(fundamental * rrand(1, 2)) * 0.1 * env * gain * 2;
 	}.play;
-	"bassnote".postln;
+	"play bass note".postln;
 }, '/bassNote');
 
 /////////////////////////////////////////////////////
